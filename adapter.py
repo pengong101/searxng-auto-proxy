@@ -10,11 +10,12 @@ import subprocess
 import sys
 from datetime import datetime
 
-# 配置
-CLASH_HOST = "192.168.1.122"
-CLASH_PORT = "7890"
-SEARXNG_CONTAINER = "searxng"
-LOG_FILE = "/var/log/searxng-proxy-check.log"
+# 配置 / Configuration
+# 使用环境变量，支持自定义配置 / Use environment variables for custom configuration
+CLASH_HOST = os.environ.get("CLASH_HOST", "localhost")  # 默认 localhost / Default to localhost
+CLASH_PORT = os.environ.get("CLASH_PORT", "7890")
+SEARXNG_CONTAINER = os.environ.get("SEARXNG_CONTAINER", "searxng")
+LOG_FILE = os.environ.get("LOG_FILE", "/var/log/searxng-proxy-check.log")
 PROXY_URL = f"http://{CLASH_HOST}:{CLASH_PORT}"
 
 # 搜索引擎分类
