@@ -54,9 +54,9 @@ def check_proxy():
         return False
 
 def update_searxng_config(enable_global):
-    """更新 SearXNG 配置"""
+    """Update SearXNG configuration"""
     if enable_global:
-        log("🌐 启用全球搜索引擎（Google, DuckDuckGo, Wikipedia...）")
+        log("🌐 Enabling global search engines (Google, DuckDuckGo, Wikipedia...)")
     else:
         log("🇨🇳 禁用全球搜索引擎，仅保留国内引擎")
     
@@ -94,8 +94,8 @@ print("✅ 配置已更新")
     return True
 
 def restart_searxng():
-    """重启 SearXNG"""
-    log("🔄 重启 SearXNG 容器...")
+    """Restart SearXNG container"""
+    log("🔄 Restarting SearXNG container...")
     
     try:
         subprocess.run(['docker', 'restart', SEARXNG_CONTAINER], check=True)
@@ -109,8 +109,8 @@ def restart_searxng():
         return False
 
 def test_search():
-    """测试搜索功能"""
-    log("🧪 测试搜索功能...")
+    """Test search functionality"""
+    log("🧪 Testing search functionality...")
     
     import time
     time.sleep(5)  # 等待 SearXNG 完全就绪
@@ -144,36 +144,36 @@ def test_search():
         log(f"⚠️  百度测试失败：{str(e)}")
 
 def main():
-    """主流程"""
+    """Main workflow"""
     log("=" * 60)
-    log("🚀 SearXNG 自适应代理检测启动")
+    log("🚀 SearXNG Auto Proxy Detection Starting")
     log("=" * 60)
     
-    # 检测代理
+    # Check proxy
     proxy_available = check_proxy()
     
-    # 更新配置
+    # Update configuration
     if not update_searxng_config(proxy_available):
-        log("❌ 配置更新失败，退出")
+        log("❌ Configuration update failed, exiting")
         sys.exit(1)
     
-    # 重启 SearXNG
+    # Restart SearXNG
     if not restart_searxng():
-        log("❌ 重启失败，退出")
+        log("❌ Restart failed, exiting")
         sys.exit(1)
     
-    # 测试搜索
+    # Test search
     test_search()
     
     log("=" * 60)
-    log("✅ 自适应代理检测完成")
+    log("✅ Auto Proxy Detection Complete")
     log("=" * 60)
     
-    # 返回状态
+    # Return status
     if proxy_available:
-        log("🌐 当前状态：全球搜索引擎已启用")
+        log("🌐 Status: Global search engines enabled")
     else:
-        log("🇨🇳 当前状态：仅国内搜索引擎")
+        log("🇨🇳 Status: Domestic search engines only")
 
 if __name__ == '__main__':
     main()
