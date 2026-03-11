@@ -128,12 +128,12 @@ tail -f /var/log/searxng-proxy-check.log
 
 ```python
 # Clash 代理配置
-CLASH_HOST = "192.168.1.122"
+CLASH_HOST = "${CLASH_HOST:-localhost}"
 CLASH_PORT = "7890"
 
 # SearXNG 配置
 SEARXNG_CONTAINER = "searxng"
-SEARXNG_URL = "http://192.168.1.122:8081"
+SEARXNG_URL = "http://${CLASH_HOST:-localhost}:8081"
 
 # 日志配置
 LOG_FILE = "/var/log/searxng-proxy-check.log"
@@ -237,7 +237,7 @@ docker ps | grep clash
 netstat -tlnp | grep 7890
 
 # 手动测试代理
-curl --proxy http://192.168.1.122:7890 https://www.google.com
+curl --proxy http://${CLASH_HOST:-localhost}:7890 https://www.google.com
 ```
 
 **解决：**
@@ -278,7 +278,7 @@ docker exec searxng cat /etc/searxng/settings.yml
 **检查：**
 ```bash
 # 测试 API
-curl "http://192.168.1.122:8081/search?q=test&format=json"
+curl "http://${CLASH_HOST:-localhost}:8081/search?q=test&format=json"
 
 # 检查引擎状态
 docker exec searxng cat /etc/searxng/settings.yml | grep -A3 "name: google"
