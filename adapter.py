@@ -118,7 +118,7 @@ def test_search():
     # 测试 Google（如果启用）
     try:
         response = requests.get(
-            f'http://192.168.1.122:8081/search?q=test&format=json&engines=google',
+            f'http://{CLASH_HOST}:{CLASH_PORT}/search?q=test&format=json&engines=google',
             timeout=15
         )
         data = response.json()
@@ -132,7 +132,7 @@ def test_search():
     # 测试百度
     try:
         response = requests.get(
-            f'http://192.168.1.122:8081/search?q=test&format=json&engines=baidu',
+            f'http://{CLASH_HOST}:{CLASH_PORT}/search?q=test&format=json&engines=baidu',
             timeout=15
         )
         data = response.json()
