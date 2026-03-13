@@ -45,8 +45,8 @@ cd skills/searxng-auto-proxy
 
 ### Clash 配置
 ```yaml
-# Clash 代理地址
-CLASH_HOST: "192.168.1.122"
+# Clash 代理地址（根据实际情况修改）
+CLASH_HOST: "<your-clash-host>"
 CLASH_PORT: "7890"
 ```
 
@@ -55,9 +55,11 @@ CLASH_PORT: "7890"
 # SearXNG 容器名
 SEARXNG_CONTAINER: "searxng"
 
-# SearXNG 地址
-SEARXNG_URL: "http://192.168.1.122:8081"
+# SearXNG 地址（根据实际情况修改）
+SEARXNG_URL: "http://<your-searxng-host>:8081"
 ```
+
+**注意：** 请将 `<your-clash-host>` 和 `<your-searxng-host>` 替换为您实际的服务器地址。
 
 ---
 
@@ -105,7 +107,7 @@ cd /root/.openclaw/workspace
 ---
 
 **作者：** 小马 🐴  
-**仓库：** https://github.com/pengong101/skills  
+**仓库：** https://github.com/pengong101/searxng-auto-proxy  
 **许可证：** MIT
 
 ---
