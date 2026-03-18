@@ -21,7 +21,7 @@
 ### 安装
 
 ```bash
-git clone https://github.com/pengong101/searxng-auto-proxy.git
+git clone https://github.com/小马 🐴/searxng-auto-proxy.git
 cd searxng-auto-proxy
 pip3 install -r requirements.txt
 python3 adapter.py
