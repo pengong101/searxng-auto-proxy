@@ -1,7 +1,8 @@
 {
   "name": "searxng-auto-proxy",
-  "version": "latest",
+  "version": "3.0.0",
   "author": "pengong101",
   "license": "MIT",
-  "description": "OpenClaw Skill - searxng-auto-proxy"
+  "description": "SearXNG 自适应代理检测 v3.0.0 - ML 预测/性能分析/自动优化",
+  "updated": "2026-03-18"
 }
